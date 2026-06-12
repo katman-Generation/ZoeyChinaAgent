@@ -1,0 +1,98 @@
+<section id="quote-form" class="py-5">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+
+                <div class="card shadow">
+
+                    <div class="card-body p-4">
+
+                        <h2 class="mb-4 text-center">
+                            Request a Product Quote
+                        </h2>
+                        <div id="quote-response"></div>
+                        
+                        <form
+
+                            hx-post="{% url 'submit_quote' %}"
+
+                            hx-target="#quote-response"
+
+                            hx-swap="innerHTML"
+
+                            method="post"
+
+                            enctype="multipart/form-data">
+
+                            {% csrf_token %}
+
+                            <!-- Fields go here -->
+
+                            <div class="row">
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Name</label>
+                                    {{ form.name }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Email</label>
+                                    {{ form.email }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>WhatsApp</label>
+                                    {{ form.whatsapp }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Country</label>
+                                    {{ form.country }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Product</label>
+                                    {{ form.product_name }}
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Quantity</label>
+                                    {{ form.quantity }}
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label>Product Image</label>
+                                    {{ form.image }}
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <label>Additional Notes</label>
+                                    {{ form.notes }}
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-success w-100">
+
+                                Request Quote
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

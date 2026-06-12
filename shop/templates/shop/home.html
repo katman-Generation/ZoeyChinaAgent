@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Zoel China Agent</title>
+{% extends 'shop/base.html' %}
 
-    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+{% block content %}
 
-</head>
-<body>
+{% include 'shop/partials/hero.html' %}
 
-    <h1>Welcome to China Sourcing Services</h1>
+{% include 'shop/partials/how_it_works.html' %}
 
-    <p>
-        We help businesses and individuals source products from China and ship them to Africa.
-    </p>
+{% include 'shop/partials/services.html' %}
 
-</body>
-</html>
+{% include 'shop/partials/quote_form.html' %}
+
+{% endblock %}
