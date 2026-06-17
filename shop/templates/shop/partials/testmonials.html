@@ -1,0 +1,43 @@
+<section class="container py-5">
+
+    <h2 class="text-center mb-5">
+        What Our Customers Say
+    </h2>
+
+    <div class="row">
+
+        {% for testimonial in testimonials %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card h-100 shadow-sm">
+
+                <div class="card-body">
+
+                    <p>
+                        "{{ testimonial.review }}"
+                    </p>
+
+                    <hr>
+
+                    <strong>
+                        {{ testimonial.customer_name }}
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        {{ testimonial.country }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>

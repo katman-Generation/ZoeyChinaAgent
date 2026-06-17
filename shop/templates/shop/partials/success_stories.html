@@ -1,0 +1,39 @@
+<section class="bg-light py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            Recent Success Stories
+        </h2>
+
+        <div class="row">
+
+            {% for story in success_stories %}
+
+            <div class="col-md-6 mb-4">
+
+                <div class="card">
+
+                    <div class="card-body">
+
+                        <h4>
+                            {{ story.title }}
+                        </h4>
+
+                        <p>
+                            {{ story.description }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

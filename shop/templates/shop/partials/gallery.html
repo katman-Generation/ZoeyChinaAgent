@@ -1,0 +1,37 @@
+<section class="container py-5">
+
+    <h2 class="text-center mb-5">
+
+        Products We've Sourced
+
+    </h2>
+
+    <div class="row">
+
+        {% for item in product_gallery %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card">
+
+                <img
+                    src="{{ item.image.url }}"
+                    class="card-img-top">
+
+                <div class="card-body">
+
+                    <h5>
+                        {{ item.title }}
+                    </h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>

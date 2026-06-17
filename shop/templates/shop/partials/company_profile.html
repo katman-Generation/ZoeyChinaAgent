@@ -1,0 +1,49 @@
+<section class="container py-5">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-4">
+
+            {% if company_profile.photo %}
+                <img
+                    src="{{ company_profile.photo.url }}"
+                    class="img-fluid rounded shadow">
+            {% endif %}
+
+        </div>
+
+        <div class="col-md-8">
+
+            <h2>
+                Meet Your China Sourcing Partner
+            </h2>
+
+            <h4>
+                {{ company_profile.owner_name }}
+            </h4>
+
+            <p>
+                {{ company_profile.about }}
+            </p>
+
+            <ul class="list-group">
+
+                <li class="list-group-item">
+                    📍 {{ company_profile.business_address }}
+                </li>
+
+                <li class="list-group-item">
+                    📱 {{ company_profile.whatsapp }}
+                </li>
+
+                <li class="list-group-item">
+                    ✉️ {{ company_profile.email }}
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
