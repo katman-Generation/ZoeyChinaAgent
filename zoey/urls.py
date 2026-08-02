@@ -21,9 +21,9 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-admin.site.site_header = "Zoey ChinaAgent Administration"
-admin.site.site_title = "Zoey Admin"
-admin.site.index_title = "Welcome to Zoey ChinaAgent"
+admin.site.site_header = "ZochiTrading Administration"
+admin.site.site_title = "ZochiTrading Admin"
+admin.site.index_title = "Welcome to ZochiTrading"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
