@@ -151,8 +151,8 @@ AWS_S3_FILE_OVERWRITE = False
 
 AWS_S3_CUSTOM_DOMAIN = (
     "sxqgrtvyrlpzmoetynep.storage.supabase.co"
+    "/storage/v1/object/public/ZochiMedia"
 )
-AWS_LOCATION = ""
 
 
 STORAGES = {
