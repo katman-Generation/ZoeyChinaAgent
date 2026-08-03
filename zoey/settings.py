@@ -149,6 +149,11 @@ AWS_DEFAULT_ACL = None
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 
+AWS_S3_CUSTOM_DOMAIN = (
+    "sxqgrtvyrlpzmoetynep.storage.supabase.co"
+)
+AWS_LOCATION = ""
+
 
 STORAGES = {
 
@@ -161,13 +166,11 @@ STORAGES = {
     },
 
 }
-AWS_S3_CUSTOM_DOMAIN = (
-    f"{AWS_STORAGE_BUCKET_NAME}."
-    f"{AWS_S3_ENDPOINT_URL.replace('https://', '')}"
+MEDIA_URL = (
+    "https://sxqgrtvyrlpzmoetynep.storage.supabase.co/"
+    "storage/v1/object/public/"
+    f"{AWS_STORAGE_BUCKET_NAME}/"
 )
-
-
-MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
 
 STATIC_URL = 'static/'
 
