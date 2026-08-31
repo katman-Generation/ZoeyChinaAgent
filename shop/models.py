@@ -17,6 +17,13 @@ class QuoteRequest(models.Model):
     country = models.CharField(max_length=100)
 
     product_name = models.CharField(max_length=200)
+    product = models.ForeignKey(
+        'Product',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='quote_requests'
+    )
     quantity = models.PositiveIntegerField()
 
     notes = models.TextField(blank=True)
@@ -89,16 +96,55 @@ class CompanyProfile(models.Model):
     def __str__(self):
         return self.company_name
     
-class ProductGallery(models.Model):
+class ProductCategory(models.Model):
 
-    title = models.CharField(max_length=200)
+    name = models.CharField(
+        max_length=100,
+        unique=True
+    )
+
+    def __str__(self):
+        return self.name
+
+
+class Product(models.Model):
+
+    title = models.CharField(
+        max_length=200
+    )
+
+    category = models.ForeignKey(
+        ProductCategory,
+        on_delete=models.CASCADE,
+        related_name='products'
+    )
+
+    description = models.TextField(
+        blank=True
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return self.title
+
+
+class ProductImage(models.Model):
+
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='images'
+    )
 
     image = models.ImageField(
         upload_to='gallery/'
     )
 
     def __str__(self):
-        return self.title
+        return f"{self.product.title} - Image"
     
 class ShipmentProof(models.Model):
 
@@ -119,3 +165,4 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+        

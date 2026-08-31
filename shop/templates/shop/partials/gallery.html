@@ -1,34 +1,65 @@
 <section class="container py-5">
 
-    <h2 class="text-center mb-5">
+    <div class="text-center mb-5">
 
-        Products We've Sourced
+        <h2>
+            Products We've Sourced
+        </h2>
 
-    </h2>
+        <p class="text-muted">
+            Explore our product categories
+        </p>
+
+    </div>
+
 
     <div class="row">
 
-        {% for item in product_gallery %}
+        {% for category in product_categories %}
 
-        <div class="col-md-4 mb-4">
+            <div class="col-md-6 col-lg-4 mb-4">
 
-            <div class="card">
+                <a
+                    href="{% url 'category_products' category.id %}"
+                    class="text-decoration-none"
+                >
 
-                <img
-                    src="{{ item.image.url }}"
-                    class="card-img-top">
+                    <div class="card h-100 shadow-sm">
 
-                <div class="card-body">
+                        <div class="card-body text-center p-5">
 
-                    <h5>
-                        {{ item.title }}
-                    </h5>
+                            <h4 class="card-title text-dark">
 
-                </div>
+                                {{ category.name }}
+
+                            </h4>
+
+                            <p class="text-muted mb-0">
+
+                                {{ category.products.count }}
+                                products
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </a>
 
             </div>
 
-        </div>
+        {% empty %}
+
+            <div class="col-12 text-center">
+
+                <p class="text-muted">
+
+                    Product categories will appear here soon.
+
+                </p>
+
+            </div>
 
         {% endfor %}
 

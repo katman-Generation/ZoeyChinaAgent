@@ -1,0 +1,91 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row">
+
+        <!-- PRODUCT IMAGES -->
+
+        <div class="col-lg-7">
+
+            <div class="row">
+
+                {% for image in product.images.all %}
+
+                    <div class="col-md-6 mb-4">
+
+                        <div class="card">
+
+                            <img
+                                src="{{ image.image.url }}"
+                                class="img-fluid rounded"
+                                alt="{{ product.title }}"
+                            >
+
+                        </div>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="col-12">
+
+                        <p>
+                            No images available.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT INFORMATION -->
+
+        <div class="col-lg-5">
+
+            <h1 class="mb-3">
+                {{ product.title }}
+            </h1>
+
+
+            <p class="text-muted mb-3">
+
+                Category:
+                {{ product.category.name }}
+
+            </p>
+
+
+            {% if product.description %}
+
+                <div class="mb-4">
+
+                    <p>
+                        {{ product.description }}
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+            <a
+                href="{% url 'home' %}?product={{ product.id }}#quote-form"
+                class="btn btn-primary btn-lg"
+            >
+                Order This Product
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

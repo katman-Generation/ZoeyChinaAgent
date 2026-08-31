@@ -13,77 +13,107 @@
                         <h2 class="mb-4 text-center">
                             What product are you looking for today?
                         </h2>
-                        <div id="quote-response"></div>
+                        <div id="quote-response">
                         
-                        <form
+                            <form
 
-                            hx-post="{% url 'submit_quote' %}"
+                                hx-post="{% url 'submit_quote' %}"
 
-                            hx-target="#quote-response"
+                                hx-target="#quote-response"
 
-                            hx-swap="innerHTML"
+                                hx-swap="innerHTML"
 
-                            method="post"
+                                method="post"
 
-                            enctype="multipart/form-data">
+                                enctype="multipart/form-data">
 
-                            {% csrf_token %}
+                                {% csrf_token %}
 
-                            <!-- Fields go here -->
+                                {% if selected_product %}
+                                    <input
+                                        type="hidden"
+                                        name="product"
+                                        value="{{ selected_product.id }}"
+                                    >
+                                {% endif %}
 
-                            <div class="row">
+                                <!-- Fields go here -->
 
-                                <div class="col-md-6 mb-3">
-                                    <label>Name</label>
-                                    {{ form.name }}
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-3">
+                                        <label>Name</label>
+                                        {{ form.name }}
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label>Email</label>
+                                        {{ form.email }}
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label>WhatsApp</label>
+                                        {{ form.whatsapp }}
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label>Country</label>
+                                        {{ form.country }}
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+
+                                        <label for="{{ form.product_name.id_for_label }}">
+                                            Product
+                                        </label>
+
+                                        {% if selected_product %}
+
+                                            <input
+                                                type="text"
+                                                name="product_name"
+                                                value="{{ selected_product.title }}"
+                                                class="form-control"
+                                                readonly
+                                            >
+
+                                        {% else %}
+
+                                            {{ form.product_name }}
+
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label>Quantity</label>
+                                        {{ form.quantity }}
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <label>Product Image</label>
+                                        {{ form.image }}
+                                    </div>
+
+                                    <div class="col-12 mb-3">
+                                        <label>Additional Notes</label>
+                                        {{ form.notes }}
+                                    </div>
+
                                 </div>
 
-                                <div class="col-md-6 mb-3">
-                                    <label>Email</label>
-                                    {{ form.email }}
-                                </div>
+                                <button
+                                    type="submit"
+                                    class="btn btn-success w-100"
+                                    >
 
-                                <div class="col-md-6 mb-3">
-                                    <label>WhatsApp</label>
-                                    {{ form.whatsapp }}
-                                </div>
+                                    Request Quote
 
-                                <div class="col-md-6 mb-3">
-                                    <label>Country</label>
-                                    {{ form.country }}
-                                </div>
+                                </button>
 
-                                <div class="col-md-6 mb-3">
-                                    <label>Product</label>
-                                    {{ form.product_name }}
-                                </div>
+                            </form>
 
-                                <div class="col-md-6 mb-3">
-                                    <label>Quantity</label>
-                                    {{ form.quantity }}
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <label>Product Image</label>
-                                    {{ form.image }}
-                                </div>
-
-                                <div class="col-12 mb-3">
-                                    <label>Additional Notes</label>
-                                    {{ form.notes }}
-                                </div>
-
-                            </div>
-
-                            <button
-                                type="submit"
-                                class="btn btn-success w-100">
-
-                                Request Quote
-
-                            </button>
-
-                        </form>
+                        </div>
 
                     </div>
 

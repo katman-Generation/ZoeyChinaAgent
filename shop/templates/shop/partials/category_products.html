@@ -1,0 +1,119 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row">
+
+        <!-- CATEGORY SIDEBAR -->
+
+        <div class="col-md-3">
+
+            <h4 class="mb-4">
+                Categories
+            </h4>
+
+            <div class="list-group">
+
+                {% for item in categories %}
+
+                    <a
+                        href="{% url 'category_products' item.id %}"
+                        class="list-group-item list-group-item-action
+                        {% if item.id == category.id %}active{% endif %}"
+                    >
+
+                        {{ item.name }}
+
+                    </a>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <div class="col-md-9">
+
+            <h2 class="mb-4">
+                {{ category.name }}
+            </h2>
+
+
+            <div class="row">
+
+                {% for product in products %}
+
+                    <div class="col-md-6 col-lg-4 mb-4">
+
+                        <div class="card h-100">
+
+                            {% with product.images.first as image %}
+
+                                {% if image %}
+
+                                    <img
+                                        src="{{ image.image.url }}"
+                                        class="card-img-top"
+                                        alt="{{ product.title }}"
+                                    >
+
+                                {% endif %}
+
+                            {% endwith %}
+
+
+                            <div class="card-body">
+
+                                <h5 class="card-title">
+                                    {{ product.title }}
+                                </h5>
+
+
+                                {% if product.description %}
+
+                                    <p class="card-text">
+                                        {{ product.description }}
+                                    </p>
+
+                                {% endif %}
+
+
+                                <a
+                                    href="{% url 'product_detail' product.id %}"
+                                    class="btn btn-primary"
+                                >
+                                    Order This Product
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="col-12">
+
+                        <p>
+                            No products available in this category yet.
+                        </p>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
